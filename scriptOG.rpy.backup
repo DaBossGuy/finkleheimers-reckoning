@@ -1,0 +1,59 @@
+﻿# The script of the game goes in this file.
+
+# Declare characters used by this game. The color argument colorizes the
+# name of the character.
+
+define f = Character("Finkleheimer")
+
+define mc = Character("[mcname]")
+
+# The game starts here.
+
+label start:
+
+    # Show a background. This uses a placeholder by default, but you can
+    # add a file (named either "bg room.png" or "bg room.jpg") to the
+    # images directory to show it.
+
+    scene bg room
+
+    # This shows a character sprite. A placeholder is used, but you can
+    # replace it by adding a file named "eileen happy.png" to the images
+    # directory.
+
+    
+    # These display lines of dialogue.
+    
+    $ money = 0
+    
+    
+    $ mcname = renpy.input("What is your name?")
+    
+    if mcname == "":
+        $ mcname="Leo"
+   
+    show finkleheimer
+
+    f "THIS IS FINKLEHEIMER. RETURN TO ME WHAT YOU HAVE TAKETH. AND YOUR SINS SHALL BE FORGIVEN. DO NOT HENCE MY SPEEK? THOU SHALTH BE BANISHED TO THY INNER REALM OF SORROW!"
+
+    f "CURSE YOU, [mcname]!"
+
+    f "IMAGINE ONLY HAVING [money] COINS!"
+    
+    $ earn = renpy.input("Lets show HIM who's boss. How much you want son?", allow="123456789")
+
+    $ earn = int(earn)
+    
+    while earn == 0:
+        $ earn = renpy.input("Lets show HIM who's boss. How much you want son?", allow="123456789",)
+        $ earn = int(earn)
+    $ money += earn
+
+    f "oh fuck you have [money] coins now....."
+
+    
+
+
+    # This ends the game.
+
+    return
